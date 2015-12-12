@@ -1,0 +1,5 @@
+{
+  "test_login.py::test_login_error_password": true, 
+  "test_login.py::test_login_post_data": true, 
+  "test_login.py::test_login_success": true
+}

@@ -1,0 +1,11 @@
+django==1.6.5
+#flask
+#flask-login
+#flask-sqlalchemy
+#django
+#uwsgi
+#mysqldb
+pymysql
+pytest
+redis
+django-tokenapi
