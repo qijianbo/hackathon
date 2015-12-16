@@ -1,11 +1,4 @@
-django==1.6.5
-#flask
-#flask-login
-#flask-sqlalchemy
-#django
-#uwsgi
-#mysqldb
+django==1.6.1
 pymysql
 pytest
 redis
-django-tokenapi

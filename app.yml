@@ -1,5 +1,4 @@
 language: py3
 script:
   - pip install -r requirements.txt
-  #- python /vagrant/app/manage.py migrate
   - python app/manage.py runserver 0.0.0.0:8080

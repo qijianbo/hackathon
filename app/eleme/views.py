@@ -1,77 +1,56 @@
-#coding:utf-8
-#from django.shortcuts import render
-from django.http import HttpResponse
-#from Controller
-#from django.contrib.auth import authenticate
-#from django.views.decorators.csrf import csrf_exempt
-from django.conf import settings
-#from django.contrib.auth import get_user_model
-#from eleme.tokens import token_generator
-from django.contrib import auth
-#from eleme.models import user
-from eleme.http import JsonError,JsonResponseBadRequest
-#from app.reverse_models import Food, User
-#try:
-#    import simplejson as json
-#except ImportError:
- #   import json
-#try:
-#    from django.contrib.auth import get_user_model
-#except ImportError: # Django < 1.5
-#    from django.contrib.auth.models import User
-#else:
- #   User = get_user_model()
-#def index(request):
-#	users = user.objects.all()
-#   return HttpResponse("HttpResponse")
-	
-#	return HttpResponse("HttpResponse")
-# Create your views here.
-#@csfr_exempt
-def login(request):
-    if  request.method == 'POST':
-        request.session.delete_test_cookie()
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
-        return HttpResponse(status=200)
-#        return HttpResponse(username)
-#        if username and password:
-        user = auth.authenticate(username=username, password=password)
-
- #           if user:
- #               TOKEN_CHECK_ACTIVE_USER = getattr(settings, "TOKEN_CHECK_ACTIVE_USER", False)
-
-        if user is not None:    #and user.is_active:
-            auth.login(request,user)
-            return HttpResponse (status=200)
-                 #   return JsonResponse(status=200)
- #                  data = {
- #                       "user_id": id,
- #                       "username": username,
- #                       "access_token": token_generator.make_token(user),
- #                   }
- #               return JsonResponse(data)
- #           else:
- #               return JsonError(code='USER_AUTH_FAIL',error_string='用户名或密码错误')#status=403
- #       else:
- #           return JsonError(code='EMPTY_REQUEST',error_string='请求体为空')#status=400
- #   else:
-#        return HttpResponse(status=400)
-#        return JsonError(code='MALFORMED_JSON',error_string
+#!/usr/bin/python
+#-*- coding: utf-8 -*-
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse 
+from django.contrib.auth import authenticate
+#from eleme.http import  Unauthorized,BadRequest,BadRequest1,Forbidden
+try:
+    import simplejson as json
+except ImportError:
+    import json
+@csrf_exempt
+def index (request):
+    return HttpResponse('Hello_World.')
+@csrf_exempt
+def login (request):
+    # try: 
+    #     login()
+    # except Exception,e: 
+    #     return BadRequest()
+    if request.method == 'POST':
+        data = request.POST.get('data')
+        try: 
+            eval(data)
+            return HttpResponse(status = 404)
+        except Exception,e :
+            return HttpResponse(
+                json.dumps(
+                {"code": 'MALFORMED_JSON',
+                "message": '格式错误',}
+                ),
+                content_type='application/json',
+                status = 400
+                )
+        username = request.POST.get('username','') 
+        password = request.POST.get('password','') 
+        user = authenticate(username = username, password = password)
+        if user is not None:
+            return HttpResponse(status = 502)
         else:
-            return HttpResponse (status=403)
+            return HttpResponse(
+            json.dumps(
+                {"code": 'USER_AUTH_FAIL',
+                "message": '用户名或密码错误',}
+            ),
+            content_type='application/json',
+            status = 403
+        )
     else:
-        return JsonResponseBadRequest("error_string")
-
-    
-
-
-
-
-
-
-
-
-
-
-
+        return HttpResponse(
+            json.dumps(
+                {"code": 'MALFORMED_JSON',
+                "message": '格式错误',}
+            ),
+            content_type='application/json',
+            status = 400
+        )
