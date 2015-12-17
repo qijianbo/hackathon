@@ -3,6 +3,7 @@
 .python-version
 .vagrant
 *.bak
+*.py.bak
 tags
 *.pyc
 *.py~
