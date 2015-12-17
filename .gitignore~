@@ -2,6 +2,7 @@
 *.log
 .python-version
 .vagrant
+*.bak
 tags
 *.pyc
 *.py~
