@@ -3,7 +3,8 @@
 .python-version
 .vagrant
 tags
-
+*.pyc
+*.py~
 # C extensions
 *.h
 *.c
