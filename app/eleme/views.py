@@ -18,24 +18,35 @@ def login (request):
     # except Exception,e: 
     #     return BadRequest()
     if request.method == 'POST':
-        data = request.POST.get('data')
-        try: 
-            eval(data)
-            return HttpResponse(status = 404)
-        except Exception,e :
-            return HttpResponse(
-                json.dumps(
-                {"code": 'MALFORMED_JSON',
-                "message": '格式错误',}
-                ),
-                content_type='application/json',
-                status = 400
-                )
-        username = request.POST.get('username','') 
-        password = request.POST.get('password','') 
+        #data = json.loads(request.raw_post_data)
+        # try: 
+        #     eval(request.raw_post_data)
+        #     return HttpResponse(status = 404)
+        # except Exception,e :
+        #     return HttpResponse(
+        #         json.dumps(
+        #         {"code": 'MALFORMED_JSON',
+        #         "message": '格式错误',}
+        #         ),
+        #         content_type='application/json',
+        #         status = 400
+        #         )
+        # data = request.POST(data)
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        return HttpResponse(
+            json.dumps(
+                {"code": username,
+                "message": password,}
+            ),
+            content_type='application/json',
+            status = 400
+        )
+
         user = authenticate(username = username, password = password)
         if user is not None:
-            return HttpResponse(status = 502)
+            login (request,user)
         else:
             return HttpResponse(
             json.dumps(
