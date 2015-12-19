@@ -8,3 +8,15 @@ INFO:hackathon.launcher:app launching...
 INFO:root:activated py3 virtualenv
 INFO:hackathon.launcher:execute script: pip install -r requirements.txt
 Collecting django==1.6.1 (from -r requirements.txt (line 1))
+  Downloading Django-1.6.1-py2.py3-none-any.whl (6.7MB)
+Collecting pymysql (from -r requirements.txt (line 2))
+  Downloading PyMySQL-0.6.7-py2.py3-none-any.whl (69kB)
+Collecting pytest (from -r requirements.txt (line 3))
+  Downloading pytest-2.8.5-py2.py3-none-any.whl (151kB)
+Collecting redis (from -r requirements.txt (line 4))
+  Downloading redis-2.10.5-py2.py3-none-any.whl (60kB)
+Collecting py>=1.4.29 (from pytest->-r requirements.txt (line 3))
+  Downloading py-1.4.31-py2.py3-none-any.whl (81kB)
+Installing collected packages: django, pymysql, py, pytest, redis
+Successfully installed django-1.6.1 py-1.4.31 pymysql-0.6.7 pytest-2.8.5 redis-2.10.5
+INFO:hackathon.launcher:execute script: python app/manage.py runserver 0.0.0.0:8080
