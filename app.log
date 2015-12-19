@@ -1,0 +1,10 @@
+INFO:hackathon.launcher:app launching...
+INFO:root:activated py3 virtualenv
+INFO:hackathon.launcher:execute script: pip install -r requirements.txt
+[I 151219 15:06:15 server:271] Serving on http://127.0.0.1:5500
+[I 151219 15:06:15 handlers:58] Start watching changes
+[I 151219 15:06:15 handlers:60] Start detecting changes
+INFO:hackathon.launcher:app launching...
+INFO:root:activated py3 virtualenv
+INFO:hackathon.launcher:execute script: pip install -r requirements.txt
+Collecting django==1.6.1 (from -r requirements.txt (line 1))

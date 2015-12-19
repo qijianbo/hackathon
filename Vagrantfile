@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
 
   # config.vm.box_check_update = false
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "eleme-hackathon"
+    vb.name = "hackathon"
     vb.cpus = 2
     vb.memory = "1024"
   end
